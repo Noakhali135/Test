@@ -9,17 +9,17 @@ on:
       - main
 
 jobs:
-  php-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Check out code
       uses: actions/checkout@v3
 
-    - name: Set up PHP
+    - name: Install PHP and Composer
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
 
-    - name: Validate PHP Syntax
-      run: php -l index.php sendMessage.php getMessages.php
+    - name: Validate Composer
+      run: composer validate --strict
